@@ -33,7 +33,7 @@ const ListLink = ({ link }) => {
                     </div>
                     {
                       item.status === SOLD_OUT ?
-                        <div className={styles.soldOut}>Sold out</div> : <img className={styles.arrowRight} src={ARROW} />
+                        <div className={styles.soldOut}>{SOLD_OUT}</div> : <img className={styles.arrowRight} src={ARROW} />
                     }
                   </a>
                 );
@@ -99,8 +99,11 @@ const ClassicLink = ({ link }) => {
   )
 };
 
+
 const LinkRenderer = ({ link }) => {
   const { href, description, type } = link;
+  // TODO: Better error handling + truncating the link description (when neccessary) + URL validation
+  // Probably better to handle on the backend though
   if (!href || !description) return <span />;
 
   if (type === MUSIC) {
